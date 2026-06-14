@@ -27,12 +27,11 @@ export function ChargingProgressScreen({ location, onBack, onStopCharging }) {
         </div>
       </div>
 
-      <section className="mt-5 rounded-[32px] bg-[linear-gradient(145deg,#0F172A_0%,#1D4ED8_64%,#06B6D4_130%)] p-5 text-white shadow-soft">
+      <section className="mt-5 rounded-[28px] bg-navy p-5 text-white shadow-soft">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Live session cost</p>
-            <h3 className="mt-3 text-4xl font-black leading-none">{formatCurrency(chargingSnapshot.estimatedRunningCost)}</h3>
-            <p className="mt-2 text-sm font-semibold text-blue-100">Charging in Progress</p>
+            <p className="text-sm font-semibold text-blue-100">Status</p>
+            <h3 className="mt-1 text-2xl font-black">Charging in Progress</h3>
           </div>
           <span className="rounded-full bg-success px-3 py-1 text-xs font-black text-white">Live</span>
         </div>
@@ -57,7 +56,7 @@ export function ChargingProgressScreen({ location, onBack, onStopCharging }) {
       </section>
 
       <section className="mt-4 rounded-[24px] border border-blue-electric/20 bg-white p-4 shadow-card">
-        <p className="text-sm font-black text-blue-deep">Pay only for final measured usage.</p>
+        <p className="text-sm font-black text-blue-deep">Estimated cost updates as kWh usage increases.</p>
         <p className="mt-2 text-xs leading-5 text-slate-600">Final billing is calculated after the session stops.</p>
       </section>
 

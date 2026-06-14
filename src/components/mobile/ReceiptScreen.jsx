@@ -19,12 +19,12 @@ export function ReceiptScreen({ location, onDone }) {
         <p className="mt-1 text-sm leading-6 text-slate-500">Automatic receipt generated for this session.</p>
       </div>
 
-      <section className="mt-5 overflow-hidden rounded-[32px] border border-line bg-white shadow-card">
-        <div className="bg-[linear-gradient(145deg,#0F172A_0%,#2563EB_70%,#8B5CF6_135%)] p-5 text-white">
+      <section className="mt-5 overflow-hidden rounded-[28px] border border-line bg-white shadow-card">
+        <div className="bg-navy p-5 text-white">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Paid actual usage</p>
-              <h3 className="mt-3 text-4xl font-black leading-none">{formatCurrency(finalReceipt.totalCost)}</h3>
+              <p className="text-sm font-semibold text-blue-100">Total cost</p>
+              <h3 className="mt-2 text-3xl font-black">{formatCurrency(finalReceipt.totalCost)}</h3>
             </div>
             <div className="rounded-full bg-success px-3 py-1 text-xs font-black text-white">Paid</div>
           </div>
@@ -49,7 +49,6 @@ export function ReceiptScreen({ location, onDone }) {
 
       <section className="mt-4 rounded-[24px] border border-blue-electric/20 bg-white p-4 shadow-card">
         <p className="text-sm font-black text-blue-deep">No trapped balance. You paid only for actual charging usage.</p>
-        <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">Receipt is ready for company reporting.</p>
       </section>
 
       <div className="mt-4 grid gap-3">

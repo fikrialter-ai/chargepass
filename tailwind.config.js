@@ -12,10 +12,6 @@ export default {
           pale: "#EFF6FF"
         },
         cyan: "#06B6D4",
-        purple: {
-          soft: "#8B5CF6",
-          pale: "#F3E8FF"
-        },
         cloud: "#F8FAFC",
         line: "#E2E8F0",
         mint: "#06B6D4",

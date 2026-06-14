@@ -25,12 +25,6 @@ export function ChargingHistoryScreen() {
         </button>
       </div>
 
-      <section className="mt-5 rounded-[32px] bg-[linear-gradient(145deg,#0F172A_0%,#2563EB_72%,#8B5CF6_135%)] p-5 text-white shadow-soft">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Recent charging spend</p>
-        <h3 className="mt-3 text-4xl font-black leading-none">{formatCurrency(chargingSessions.reduce((total, session) => total + session.cost, 0))}</h3>
-        <p className="mt-2 text-sm font-semibold text-blue-100">{chargingSessions.length} automatic receipts generated</p>
-      </section>
-
       <div className="phone-screen -mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-1">
         {historyFilters.map((filter, index) => (
           <button

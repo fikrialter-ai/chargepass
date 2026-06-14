@@ -25,14 +25,12 @@ export function PaymentAuthorizationScreen({ location, onBack, onAuthorize }) {
         </div>
       </div>
 
-      <section className="mt-5 rounded-[32px] bg-[linear-gradient(145deg,#0F172A_0%,#2563EB_70%,#8B5CF6_135%)] p-5 text-white shadow-soft">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Payment authorization</p>
-        <h3 className="mt-3 text-3xl font-black leading-none">{formatCurrency(location.estimatedCost)}</h3>
-        <p className="mt-2 text-sm font-semibold text-blue-100">Estimated maximum cost before final kWh settlement</p>
-        <div className="mt-5 rounded-[24px] bg-white/10 p-4 ring-1 ring-white/10">
-          <h4 className="text-base font-black text-white">{location.name}</h4>
-          <p className="mt-2 text-xs leading-5 text-blue-100">{location.address}</p>
-          <p className="mt-3 text-xs font-black text-cyan">No prepaid wallet. Final charge follows completed usage.</p>
+      <section className="mt-5 rounded-[28px] bg-navy p-5 text-white shadow-soft">
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Payment hold</p>
+        <h3 className="mt-2 text-xl font-black leading-6">{location.name}</h3>
+        <p className="mt-2 text-sm leading-6 text-blue-100">{location.address}</p>
+        <div className="mt-4 rounded-2xl bg-white/10 p-3 text-xs font-bold text-white ring-1 ring-white/10">
+          No prepaid wallet. Final charge is based on completed kWh.
         </div>
       </section>
 
@@ -47,27 +45,20 @@ export function PaymentAuthorizationScreen({ location, onBack, onAuthorize }) {
       </section>
 
       <section className="mt-4 rounded-[24px] border border-line bg-white p-4 shadow-card">
-        <h3 className="font-black text-navy">Payment rail</h3>
+        <h3 className="font-black text-navy">Payment method</h3>
         <div className="mt-3 space-y-2">
           {paymentMethods.map((method, index) => (
             <button
               key={method}
               type="button"
               onClick={() => setActiveMethod(method)}
-              className={`flex w-full items-center justify-between rounded-[22px] border px-3 py-3 text-left text-sm font-black transition ${
+              className={`flex w-full items-center justify-between rounded-2xl border px-3 py-3 text-left text-sm font-black transition ${
                 activeMethod === method
-                  ? "border-blue-electric bg-blue-pale text-blue-deep shadow-card"
+                  ? "border-blue-electric bg-blue-pale text-blue-deep"
                   : "border-line bg-white text-navy hover:border-blue-electric"
               }`}
             >
-              <span className="flex items-center gap-3">
-                <span className={`grid h-9 w-9 place-items-center rounded-2xl text-[11px] font-black ${
-                  activeMethod === method ? "bg-blue-electric text-white" : "bg-slate-100 text-slate-500"
-                }`}>
-                  CP
-                </span>
-                {method}
-              </span>
+              <span>{method}</span>
               <span
                 className={`grid h-5 w-5 place-items-center rounded-full border ${
                   activeMethod === method ? "border-blue-electric bg-blue-electric" : "border-slate-300"
