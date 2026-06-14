@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #0F172A;
+  background: #F8FAFC;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #F8FAFC;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button,
+a,
+input,
+select {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.22);
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.dashboard-grid {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(6, 182, 212, 0.13), transparent 28%),
+    radial-gradient(circle at 80% 0%, rgba(37, 99, 235, 0.12), transparent 30%),
+    linear-gradient(rgba(226, 232, 240, 0.62) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 232, 240, 0.62) 1px, transparent 1px);
+  background-size: auto, auto, 34px 34px, 34px 34px;
+}
+
+.phone-screen {
+  scrollbar-width: none;
+}
+
+.phone-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.table-readable tbody tr {
+  transition: background-color 160ms ease;
+}
+
+.table-readable tbody tr:hover {
+  background: #F8FAFC;
+}
+
+.table-readable td,
+.table-readable th {
+  vertical-align: middle;
+}
+
+.table-readable th {
+  color: #64748B;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.table-readable td {
+  color: #334155;
+}
