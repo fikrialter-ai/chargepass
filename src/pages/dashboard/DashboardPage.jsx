@@ -65,15 +65,15 @@ export function DashboardPage() {
   }
 
   return (
-    <section className="min-h-screen bg-cloud text-slate-700">
-      <div className="mx-auto flex min-h-screen max-w-[1680px] bg-cloud">
+    <section className="h-screen overflow-hidden bg-cloud text-slate-700">
+      <div className="mx-auto flex h-full max-w-[1680px] overflow-hidden bg-cloud">
         <DashboardSidebar activePage={activePage} onPageChange={setActivePage} />
 
-        <div className="min-w-0 flex-1">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <DashboardHeader activePage={activePage} onPageChange={setActivePage} onAction={showAlert} />
 
-          <div className="min-h-[calc(100vh-80px)] bg-cloud px-5 py-6 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl space-y-6">
+          <div className="min-h-0 flex-1 overflow-y-auto bg-cloud px-5 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl space-y-6 py-6">
               {activePage === "Vehicles" ? (
                 <VehiclesPage onAction={showAlert} />
               ) : activePage === "Drivers" ? (
@@ -841,7 +841,7 @@ function TopVehicles() {
 
 function DashboardSidebar({ activePage, onPageChange }) {
   return (
-    <aside className="hidden min-h-screen w-72 shrink-0 bg-navy text-white shadow-soft lg:flex lg:flex-col">
+    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 overflow-y-auto bg-navy text-white shadow-soft lg:flex lg:flex-col">
       <div className="border-b border-white/10 p-6">
         <div className="flex items-center gap-3">
           <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[linear-gradient(135deg,#2563EB,#06B6D4)] text-lg font-black shadow-[0_12px_34px_rgba(37,99,235,0.35)]">CP</div>
@@ -879,7 +879,7 @@ function DashboardSidebar({ activePage, onPageChange }) {
 
 function DashboardHeader({ activePage, onPageChange, onAction }) {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-white/82 px-5 py-4 backdrop-blur-xl sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 shrink-0 border-b border-slate-200 bg-[#F8FAFC]/90 px-5 py-4 backdrop-blur-md sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>

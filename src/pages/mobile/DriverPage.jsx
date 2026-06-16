@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FilterChips } from "../../components/mobile/FilterChips.jsx";
-import { MapPlaceholder } from "../../components/mobile/MapPlaceholder.jsx";
+import { GoogleMapPreview } from "../../components/mobile/GoogleMapPreview.jsx";
 import { MobileScreenHeader } from "../../components/mobile/MobileScreenHeader.jsx";
 import { MobileShell } from "../../components/mobile/MobileShell.jsx";
 import { ChargingHistoryScreen } from "../../components/mobile/ChargingHistoryScreen.jsx";
@@ -224,7 +224,7 @@ function DriverLoginScreen({ onContinue }) {
 
 function DriverHomeScreen({ onViewDetail, onOpenProfile }) {
   return (
-    <div className="min-h-full px-4 pb-5">
+    <div className="min-h-full px-4 pb-5 pt-6">
       <MobileScreenHeader
         title="Hi, Driver"
         subtitle="Find nearby SPKLU and pay actual usage"
@@ -240,32 +240,31 @@ function DriverHomeScreen({ onViewDetail, onOpenProfile }) {
         }
       />
 
-      <section className="mt-5 overflow-hidden rounded-[24px] p-5 text-white shadow-glow driver-primary-panel">
+      <section className="mt-5 overflow-hidden rounded-[28px] p-5 text-white shadow-glow driver-primary-panel">
         <div className="flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#57DFFE]">Active charging access</p>
           <MobileIcon name="bolt" filled className="text-[#57DFFE]" />
         </div>
-        <h3 className="mt-3 text-[28px] font-bold leading-8">Pay only for actual usage. No trapped balance.</h3>
-        <div className="mt-6 grid grid-cols-[minmax(0,1fr)_138px] items-stretch gap-3">
-          <div className="min-w-0 rounded-[22px] bg-white/10 px-3 py-4 ring-1 ring-white/15 backdrop-blur">
+        <div className="mt-4">
+          <h3 className="text-[24px] font-bold leading-7">Pay only for actual usage</h3>
+          <p className="mt-1 text-sm font-semibold text-blue-100">No trapped balance</p>
+        </div>
+        <div className="mt-5 grid grid-cols-2 items-stretch gap-3">
+          <div className="min-w-0 rounded-[24px] bg-white/10 px-3 py-4 ring-1 ring-white/15 backdrop-blur">
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-blue-100">This month</p>
-            <p className="mt-2 whitespace-nowrap text-[27px] font-bold leading-none tracking-normal">{formatCurrency(367800)}</p>
-            <p className="mt-2 text-xs font-medium text-blue-100/90">Charging cost</p>
+            <p className="mt-2 whitespace-nowrap text-[22px] font-bold leading-7 tracking-normal">{formatCurrency(367800)}</p>
+            <p className="mt-1 text-xs font-medium text-blue-100/90">Charging cost</p>
           </div>
-          <div className="flex min-w-0 flex-col justify-between rounded-[22px] bg-white/14 px-4 py-4 text-left ring-1 ring-white/15 backdrop-blur">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/18 text-[#57DFFE] ring-1 ring-white/10">
-              <MobileIcon name="electric_bolt" filled />
-            </div>
-            <div className="mt-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-blue-100">Charged</p>
-              <p className="mt-1 whitespace-nowrap text-[21px] font-bold leading-7 text-white">148.6 kWh</p>
-            </div>
+          <div className="flex min-w-0 flex-col items-center justify-center rounded-[24px] bg-white/14 px-3 py-4 text-center ring-1 ring-white/15 backdrop-blur">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-blue-100">Charged</p>
+            <p className="mt-2 whitespace-nowrap text-[23px] font-bold leading-7 text-white">148.6 kWh</p>
+            <p className="mt-1 text-xs font-medium text-blue-100/90">Energy used</p>
           </div>
         </div>
-        <div className="mt-5 grid grid-cols-3 gap-2">
+        <div className="mt-4 grid grid-cols-3 gap-2">
           <TrustPill label="No top-up" />
           <TrustPill label="Usage only" />
-          <TrustPill label="Automatic receipt" />
+          <TrustPill label="Auto receipt" />
         </div>
       </section>
 
@@ -279,7 +278,7 @@ function DriverHomeScreen({ onViewDetail, onOpenProfile }) {
       </label>
 
       <FilterChips filters={filters} />
-      <MapPlaceholder />
+      <GoogleMapPreview />
 
       <section className="mt-5">
         <div className="mb-3 flex items-end justify-between">
@@ -301,7 +300,7 @@ function DriverHomeScreen({ onViewDetail, onOpenProfile }) {
 
 function TrustPill({ label }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/12 px-2 py-3 text-center text-[11px] font-semibold text-white backdrop-blur">
+    <div className="rounded-2xl border border-white/10 bg-white/12 px-2 py-2 text-center text-[10px] font-semibold text-white backdrop-blur">
       {label}
     </div>
   );
