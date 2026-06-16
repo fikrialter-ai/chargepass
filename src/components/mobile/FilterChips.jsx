@@ -10,10 +10,10 @@ export function FilterChips({ filters }) {
           key={filter}
           type="button"
           onClick={() => setActiveFilter(filter)}
-          className={`shrink-0 rounded-full border px-3.5 py-2.5 text-xs font-bold transition duration-200 ${
+          className={`min-h-10 shrink-0 rounded-full border px-4 py-2 text-xs font-semibold tracking-[0.03em] transition duration-200 ${
             activeFilter === filter
-              ? "border-navy bg-navy text-white shadow-card"
-              : "border-line bg-white text-slate-600 shadow-sm hover:border-blue-electric hover:text-blue-electric"
+              ? "border-[#2563EB] bg-[#2563EB] text-white shadow-card"
+              : "border-[#C3C6D7]/70 bg-white/76 text-[#434655] shadow-sm backdrop-blur hover:border-[#2563EB] hover:text-[#2563EB]"
           }`}
         >
           {filter}

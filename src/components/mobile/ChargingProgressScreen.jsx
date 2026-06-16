@@ -1,3 +1,5 @@
+import { Button } from "../ui/Button.jsx";
+import { MobileIcon } from "./MobileIcon.jsx";
 import { formatCurrency } from "../../utils/formatters.js";
 
 const chargingSnapshot = {
@@ -9,64 +11,72 @@ const chargingSnapshot = {
 
 export function ChargingProgressScreen({ location, onBack, onStopCharging }) {
   const connectorType = location.connectorTypes[0] ?? "CCS2";
+  const chargerId = `${location.id.toUpperCase().replace("SPKLU-", "CHG-")}-01`;
 
   return (
-    <div className="min-h-full bg-cloud px-4 pb-5">
-      <div className="flex items-center gap-3">
-        <button
-          type="button"
-          onClick={onBack}
-          className="grid h-10 w-10 place-items-center rounded-2xl border border-line bg-white text-lg font-black text-navy shadow-card"
-          aria-label="Back to payment authorization"
-        >
-          &lt;
-        </button>
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-mint">Charging</p>
-          <h2 className="text-lg font-black text-navy">Charging Progress</h2>
-        </div>
-      </div>
+    <div className="min-h-full px-4 pb-5">
+      <ScreenTopBar eyebrow="Charging" title="Live session" onBack={onBack} />
 
-      <section className="mt-5 rounded-[28px] p-5 text-white shadow-glow fintech-gradient">
+      <section className="mt-5 rounded-[24px] p-5 text-white shadow-glow driver-primary-panel">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-semibold text-blue-100">Status</p>
-            <h3 className="mt-1 text-2xl font-black">Charging in Progress</h3>
+            <p className="text-sm font-normal text-blue-100">Status</p>
+            <h3 className="mt-1 text-2xl font-bold">Charging in Progress</h3>
           </div>
-          <span className="rounded-full bg-success px-3 py-1 text-xs font-black text-white">Live</span>
+          <span className="rounded-full bg-[#10B981] px-3 py-1 text-xs font-semibold text-white">Live</span>
         </div>
 
-        <div className="mt-6 rounded-[24px] bg-white/10 p-4 ring-1 ring-white/10">
-          <div className="mb-3 flex items-center justify-between text-sm">
-            <span className="font-semibold text-blue-100">Battery</span>
-            <span className="font-black text-white">{chargingSnapshot.batteryPercent}%</span>
+        <div className="mt-7 rounded-[24px] bg-white/10 p-4 ring-1 ring-white/10 backdrop-blur">
+          <div className="mb-4 flex items-center justify-between">
+            <span className="text-sm font-semibold text-blue-100">Battery progress</span>
+            <span className="text-[40px] font-bold leading-none text-white">{chargingSnapshot.batteryPercent}%</span>
           </div>
           <BatteryProgress percent={chargingSnapshot.batteryPercent} />
         </div>
 
         <p className="mt-5 text-sm leading-6 text-blue-100">{location.name}</p>
-        <p className="mt-2 text-xs font-semibold text-cyan">Running cost is an estimate until stop.</p>
+        <p className="mt-1 text-xs font-semibold text-[#57DFFE]">Energy indicators update visually for prototype preview.</p>
       </section>
 
       <section className="mt-4 grid grid-cols-2 gap-3">
-        <ProgressStat label="kWh used" value={`${chargingSnapshot.kwhUsed} kWh`} />
-        <ProgressStat label="Duration" value={chargingSnapshot.duration} />
-        <ProgressStat label="Running cost" value={formatCurrency(chargingSnapshot.estimatedRunningCost)} />
-        <ProgressStat label="Connector" value={connectorType} />
+        <ProgressStat icon="electric_bolt" label="kWh used" value={`${chargingSnapshot.kwhUsed} kWh`} />
+        <ProgressStat icon="timer" label="Duration" value={chargingSnapshot.duration} />
+        <ProgressStat icon="payments" label="Running cost" value={formatCurrency(chargingSnapshot.estimatedRunningCost)} />
+        <ProgressStat icon="cable" label="Connector" value={connectorType} />
       </section>
 
-      <section className="mt-4 rounded-[24px] border border-blue-electric/20 bg-white p-4 shadow-card">
-        <p className="text-sm font-black text-blue-deep">Estimated cost updates as kWh usage increases.</p>
-        <p className="mt-2 text-xs leading-5 text-slate-600">Final billing is calculated after the session stops.</p>
+      <section className="driver-glass mt-4 rounded-[24px] p-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#434655]/70">Charger ID</p>
+            <p className="mt-1 text-sm font-bold text-[#131B2E]">{chargerId}</p>
+          </div>
+          <MobileIcon name="bolt" filled className="text-[#57DFFE]" />
+        </div>
       </section>
 
+      <Button variant="danger" className="mt-4 w-full" onClick={onStopCharging}>
+        Stop Charging
+      </Button>
+    </div>
+  );
+}
+
+function ScreenTopBar({ eyebrow, title, onBack }) {
+  return (
+    <div className="flex items-center gap-3">
       <button
         type="button"
-        onClick={onStopCharging}
-        className="mt-4 w-full rounded-2xl bg-danger px-4 py-3 text-sm font-black text-white shadow-card hover:bg-red-600"
+        onClick={onBack}
+        className="grid h-11 w-11 place-items-center rounded-2xl border border-[#C3C6D7]/55 bg-white/80 text-[#131B2E] shadow-card backdrop-blur"
+        aria-label="Back to payment authorization"
       >
-        Stop Charging
+        <MobileIcon name="arrow_back" />
       </button>
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#2563EB]">{eyebrow}</p>
+        <h2 className="text-xl font-semibold text-[#131B2E]">{title}</h2>
+      </div>
     </div>
   );
 }
@@ -74,24 +84,25 @@ export function ChargingProgressScreen({ location, onBack, onStopCharging }) {
 function BatteryProgress({ percent }) {
   return (
     <div className="flex items-center gap-2">
-      <div className="h-16 flex-1 rounded-2xl border-2 border-white/70 p-1">
-        <div className="h-full rounded-xl bg-white/10 p-1">
+      <div className="h-16 flex-1 rounded-2xl border-2 border-white/75 p-1">
+        <div className="h-full overflow-hidden rounded-xl bg-white/10 p-1">
           <div
-            className="h-full rounded-lg bg-cyan shadow-[0_0_18px_rgba(6,182,212,0.45)]"
+            className="h-full rounded-lg bg-[#57DFFE] shadow-[0_0_22px_rgba(87,223,254,0.58)]"
             style={{ width: `${percent}%` }}
           />
         </div>
       </div>
-      <div className="h-8 w-2 rounded-r-md bg-white/70" />
+      <div className="h-8 w-2 rounded-r-md bg-white/75" />
     </div>
   );
 }
 
-function ProgressStat({ label, value }) {
+function ProgressStat({ icon, label, value }) {
   return (
-    <div className="rounded-[24px] border border-line bg-white p-4 shadow-card">
-      <p className="text-xs font-semibold text-slate-500">{label}</p>
-      <p className="mt-1 text-lg font-black text-navy">{value}</p>
+    <div className="driver-card rounded-[24px] p-4">
+      <MobileIcon name={icon} className="text-[#57DFFE]" />
+      <p className="mt-3 text-xs font-semibold text-[#434655]">{label}</p>
+      <p className="mt-1 text-lg font-bold text-[#131B2E]">{value}</p>
     </div>
   );
 }

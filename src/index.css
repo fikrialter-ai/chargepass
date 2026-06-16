@@ -31,6 +31,23 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 450, "GRAD" 0, "opsz" 24;
+}
+
 button,
 a,
 input,
@@ -94,6 +111,47 @@ select:focus-visible {
     radial-gradient(circle at 12% 0%, rgba(6, 182, 212, 0.10), transparent 28%),
     radial-gradient(circle at 86% 10%, rgba(139, 92, 246, 0.10), transparent 28%),
     #F8FAFC;
+}
+
+.driver-mesh {
+  color: #131B2E;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.12), transparent 35%),
+    radial-gradient(circle at 100% 8%, rgba(87, 223, 254, 0.14), transparent 34%),
+    radial-gradient(circle at 74% 72%, rgba(125, 76, 231, 0.08), transparent 30%),
+    #FAF8FF;
+}
+
+.driver-glass {
+  border: 1px solid rgba(195, 198, 215, 0.52);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.driver-card {
+  border: 1px solid rgba(195, 198, 215, 0.42);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.driver-card:hover {
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.driver-primary-panel {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(87, 223, 254, 0.34), transparent 30%),
+    radial-gradient(circle at 90% 12%, rgba(125, 76, 231, 0.26), transparent 28%),
+    linear-gradient(135deg, #131B2E 0%, #2563EB 62%, #57DFFE 126%);
+}
+
+.driver-scan-frame {
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.22), transparent 45%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.08) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.08) 75%, transparent 75%);
+  background-size: 100% 100%, 22px 22px;
 }
 
 .phone-screen {
