@@ -32,9 +32,9 @@ export function LandingPage() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            ["No top-up", "Drivers pay through assigned company or card rails without prepaid wallet balance."],
+            ["No top-up", "Drivers pay through assigned company billing, QRIS, card, or bank rails without prepaid balance."],
             ["Actual usage", "Settlement is based on completed kWh sessions, station tariff, and receipt data."],
-            ["No trapped balance", "Finance avoids stranded wallet funds across multiple SPKLU operators."],
+            ["No trapped balance", "Finance avoids stranded prepaid funds across multiple SPKLU operators."],
             ["Fleet cost control", "Policies, reports, and monthly invoices keep EV operations accountable."]
           ].map(([title, body]) => (
             <article key={title} className="rounded-[24px] border border-line bg-white p-5 shadow-card">

@@ -3,11 +3,11 @@ import { formatCurrency } from "../../utils/formatters.js";
 const finalReceipt = {
   receiptId: "CP-RCPT-250612-1192",
   date: "12 Jun 2026, 10:48",
-  vehicle: "B 2187 EV - Hyundai Ioniq 5",
+  vehicle: "L 2187 EV - Hyundai Ioniq 5",
   totalKwh: 19.4,
   duration: "35 min",
   totalCost: 47840,
-  paymentMethod: "Corporate Account"
+  paymentMethod: "Corporate Billing Account"
 };
 
 export function ReceiptScreen({ location, onDone }) {
@@ -20,7 +20,7 @@ export function ReceiptScreen({ location, onDone }) {
       </div>
 
       <section className="mt-5 overflow-hidden rounded-[28px] border border-line bg-white shadow-card">
-        <div className="bg-navy p-5 text-white">
+        <div className="p-5 text-white fintech-gradient">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-sm font-semibold text-blue-100">Total cost</p>

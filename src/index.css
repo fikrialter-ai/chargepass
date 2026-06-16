@@ -51,11 +51,49 @@ select:focus-visible {
 
 .dashboard-grid {
   background-image:
-    radial-gradient(circle at 20% 10%, rgba(6, 182, 212, 0.13), transparent 28%),
-    radial-gradient(circle at 80% 0%, rgba(37, 99, 235, 0.12), transparent 30%),
+    radial-gradient(circle at 20% 8%, rgba(6, 182, 212, 0.14), transparent 28%),
+    radial-gradient(circle at 78% 0%, rgba(139, 92, 246, 0.10), transparent 30%),
+    radial-gradient(circle at 84% 36%, rgba(37, 99, 235, 0.10), transparent 22%),
     linear-gradient(rgba(226, 232, 240, 0.62) 1px, transparent 1px),
     linear-gradient(90deg, rgba(226, 232, 240, 0.62) 1px, transparent 1px);
-  background-size: auto, auto, 34px 34px, 34px 34px;
+  background-size: auto, auto, auto, 34px 34px, 34px 34px;
+}
+
+.cp-card {
+  border: 1px solid rgba(226, 232, 240, 0.82);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.cp-card:hover {
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.cp-glass {
+  border: 1px solid rgba(226, 232, 240, 0.62);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.fintech-gradient {
+  background:
+    radial-gradient(circle at 14% 10%, rgba(6, 182, 212, 0.36), transparent 30%),
+    radial-gradient(circle at 88% 8%, rgba(139, 92, 246, 0.32), transparent 32%),
+    linear-gradient(135deg, #0F172A 0%, #1D4ED8 55%, #06B6D4 120%);
+}
+
+.ev-gradient {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(6, 182, 212, 0.20), transparent 28%),
+    radial-gradient(circle at 80% 0%, rgba(37, 99, 235, 0.18), transparent 30%),
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+}
+
+.soft-surface {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(6, 182, 212, 0.10), transparent 28%),
+    radial-gradient(circle at 86% 10%, rgba(139, 92, 246, 0.10), transparent 28%),
+    #F8FAFC;
 }
 
 .phone-screen {
@@ -87,4 +125,5 @@ select:focus-visible {
 
 .table-readable td {
   color: #334155;
+  height: 56px;
 }

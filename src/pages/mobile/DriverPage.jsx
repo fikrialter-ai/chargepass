@@ -10,7 +10,10 @@ import { QrScanScreen } from "../../components/mobile/QrScanScreen.jsx";
 import { ReceiptScreen } from "../../components/mobile/ReceiptScreen.jsx";
 import { SpkluCard } from "../../components/mobile/SpkluCard.jsx";
 import { SpkluDetailScreen } from "../../components/mobile/SpkluDetailScreen.jsx";
+import { Button } from "../../components/ui/Button.jsx";
+import { Card } from "../../components/ui/Card.jsx";
 import { spkluLocations } from "../../data/mockData.js";
+import { formatCurrency } from "../../utils/formatters.js";
 
 const filters = ["Available", "Fast Charging", "CCS2", "Type 2", "DC Charger"];
 
@@ -82,7 +85,7 @@ function getDriverScreen({ activeScreen, selectedLocation, openDetail, backToHom
   }
 
   if (activeScreen === "profile") {
-    return <PlaceholderScreen title="Profile" subtitle="Driver profile prototype coming next." />;
+    return <DriverLoginScreen onContinue={() => window.alert("Driver login accepted in prototype mode.")} />;
   }
 
   if (activeScreen === "scan" && selectedLocation) {
@@ -142,25 +145,52 @@ function getActiveNav(activeScreen) {
     return "Profile";
   }
 
-  if (activeScreen === "scan") {
+  if (["scan", "payment", "charging", "receipt"].includes(activeScreen)) {
     return "Scan";
   }
 
   return "Home";
 }
 
-function PlaceholderScreen({ title, subtitle }) {
+function DriverLoginScreen({ onContinue }) {
   return (
     <div className="min-h-full bg-cloud px-4 pb-5">
-      <MobileScreenHeader title={title} subtitle={subtitle} />
-      <section className="mt-5 rounded-[28px] border border-line bg-white p-5 shadow-card">
-        <div className="grid h-16 w-16 place-items-center rounded-2xl bg-navy text-xl font-black text-white">RP</div>
-        <h3 className="mt-4 text-xl font-black text-navy">Raka Pratama</h3>
-        <p className="mt-1 text-sm font-semibold text-slate-500">B 2187 EV - Hyundai Ioniq 5</p>
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <ProfileStat label="No top-up" value="Active" />
-          <ProfileStat label="Billing" value="Fleet" />
+      <section className="-mx-4 -mt-1 overflow-hidden px-4 pb-7 pt-4 fintech-gradient text-white">
+        <div className="flex items-center justify-between">
+          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-lg font-black ring-1 ring-white/15">
+            CP
+          </div>
+          <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-black ring-1 ring-white/15">Driver App</span>
         </div>
+        <h2 className="mt-8 text-3xl font-black leading-9">Charge without prepaid balance.</h2>
+        <p className="mt-3 text-sm leading-6 text-blue-100">
+          Login prototype for drivers using a Corporate Billing Account, QRIS, card, or bank rails.
+        </p>
+      </section>
+
+      <Card className="-mt-5">
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">Driver Login</p>
+        <h3 className="mt-2 text-2xl font-black text-navy">Welcome back, Raka</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-500">Hyundai Ioniq 5 - L 2187 EV</p>
+
+        <div className="mt-5 grid gap-3">
+          <label className="grid gap-2 text-sm font-bold text-slate-600">
+            Company email
+            <input className="h-12 rounded-2xl border border-line bg-slate-50 px-4 text-sm font-semibold text-navy outline-none transition focus:border-blue-electric focus:bg-white" defaultValue="raka@nusantaralogistics.co.id" />
+          </label>
+          <label className="grid gap-2 text-sm font-bold text-slate-600">
+            Driver PIN
+            <input className="h-12 rounded-2xl border border-line bg-slate-50 px-4 text-sm font-semibold text-navy outline-none transition focus:border-blue-electric focus:bg-white" defaultValue="123456" type="password" />
+          </label>
+        </div>
+
+        <Button className="mt-5 w-full" onClick={onContinue}>Continue</Button>
+      </Card>
+
+      <section className="mt-4 grid grid-cols-3 gap-2">
+        <ProfileStat label="No top-up" value="Active" />
+        <ProfileStat label="Receipt" value="Auto" />
+        <ProfileStat label="Billing" value="Fleet" />
       </section>
     </div>
   );
@@ -168,7 +198,7 @@ function PlaceholderScreen({ title, subtitle }) {
 
 function DriverHomeScreen({ onViewDetail }) {
   return (
-    <div className="min-h-full bg-cloud px-4 pb-5">
+    <div className="min-h-full soft-surface px-4 pb-5">
       <MobileScreenHeader
         title="Hi, Driver"
         subtitle="Find nearby SPKLU without top-up"
@@ -183,9 +213,19 @@ function DriverHomeScreen({ onViewDetail }) {
         }
       />
 
-      <section className="mt-5 overflow-hidden rounded-[28px] bg-navy p-5 text-white shadow-soft">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">ChargePass balance model</p>
+      <section className="mt-5 overflow-hidden rounded-[28px] p-5 text-white shadow-glow fintech-gradient">
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">ChargePass charging pass</p>
         <h3 className="mt-3 text-3xl font-black leading-9">Pay actual kWh. No trapped balance.</h3>
+        <div className="mt-5 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-100">This month</p>
+            <p className="mt-1 text-3xl font-black">{formatCurrency(367800)}</p>
+          </div>
+          <div className="rounded-2xl bg-white/12 px-3 py-2 text-right ring-1 ring-white/15">
+            <p className="text-xs text-blue-100">Charged</p>
+            <p className="font-black">148.6 kWh</p>
+          </div>
+        </div>
         <div className="mt-5 grid grid-cols-3 gap-2">
           <TrustPill label="No top-up" />
           <TrustPill label="Usage only" />
@@ -233,7 +273,7 @@ function TrustPill({ label }) {
 
 function ProfileStat({ label, value }) {
   return (
-    <div className="rounded-2xl bg-slate-50 p-4">
+    <div className="rounded-2xl bg-white p-4 shadow-card ring-1 ring-line/70">
       <p className="text-xs font-bold text-slate-500">{label}</p>
       <p className="mt-1 text-sm font-black text-navy">{value}</p>
     </div>

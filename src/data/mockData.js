@@ -1,21 +1,9 @@
 export const spkluLocations = [
   {
-    id: "spklu-pln-sudirman",
-    name: "PLN SPKLU Icon Plus Sudirman",
-    address: "Jl. Jend. Sudirman Kav. 52-53, SCBD, Jakarta Selatan",
-    distance: "0.8 km",
-    pricePerKwh: 2466,
-    availableChargers: 4,
-    totalChargers: 6,
-    connectorTypes: ["CCS2", "CHAdeMO", "Type 2"],
-    status: "Available",
-    estimatedCost: 86200
-  },
-  {
-    id: "spklu-pakuwon-surabaya",
-    name: "PLN SPKLU Pakuwon Mall",
+    id: "spklu-pakuwon-mall-surabaya",
+    name: "PLN SPKLU Pakuwon Mall Surabaya",
     address: "Pakuwon Mall, Jl. Puncak Indah Lontar No. 2, Surabaya",
-    distance: "3.4 km",
+    distance: "1.4 km",
     pricePerKwh: 2475,
     availableChargers: 5,
     totalChargers: 8,
@@ -24,40 +12,52 @@ export const spkluLocations = [
     estimatedCost: 74250
   },
   {
-    id: "spklu-ciputra-world",
-    name: "Ciputra World Jakarta EV Hub",
-    address: "Jl. Prof. Dr. Satrio Kav. 3-5, Kuningan, Jakarta Selatan",
-    distance: "4.7 km",
+    id: "spklu-ciputra-world-surabaya",
+    name: "PLN SPKLU Ciputra World Surabaya",
+    address: "Ciputra World, Jl. Mayjen Sungkono No. 89, Surabaya",
+    distance: "2.8 km",
     pricePerKwh: 2550,
-    availableChargers: 2,
-    totalChargers: 4,
-    connectorTypes: ["CCS2", "Type 2"],
-    status: "Busy",
+    availableChargers: 3,
+    totalChargers: 6,
+    connectorTypes: ["CCS2", "Type 2", "DC Charger"],
+    status: "Available",
     estimatedCost: 76500
   },
   {
-    id: "spklu-km13-bekasi",
-    name: "PLN SPKLU Rest Area KM 13 Jakarta-Cikampek",
-    address: "Rest Area KM 13A, Bekasi, Jawa Barat",
-    distance: "7.4 km",
-    pricePerKwh: 2650,
-    availableChargers: 1,
-    totalChargers: 4,
-    connectorTypes: ["CCS2", "CHAdeMO"],
+    id: "spklu-tunjungan-plaza",
+    name: "PLN SPKLU Tunjungan Plaza",
+    address: "Tunjungan Plaza, Jl. Basuki Rahmat No. 8-12, Surabaya",
+    distance: "3.6 km",
+    pricePerKwh: 2500,
+    availableChargers: 2,
+    totalChargers: 6,
+    connectorTypes: ["CCS2", "CHAdeMO", "Type 2"],
     status: "Limited",
-    estimatedCost: 92750
+    estimatedCost: 87500
   },
   {
-    id: "spklu-tunjungan-plaza",
-    name: "Tunjungan Plaza Surabaya SPKLU",
-    address: "Jl. Basuki Rahmat No. 8-12, Surabaya",
-    distance: "8.9 km",
-    pricePerKwh: 2500,
+    id: "spklu-galaxy-mall",
+    name: "PLN SPKLU Galaxy Mall",
+    address: "Galaxy Mall, Jl. Dharmahusada Indah Timur No. 35-37, Surabaya",
+    distance: "5.1 km",
+    pricePerKwh: 2466,
+    availableChargers: 4,
+    totalChargers: 4,
+    connectorTypes: ["CCS2", "Type 2"],
+    status: "Available",
+    estimatedCost: 86200
+  },
+  {
+    id: "spklu-uc-surabaya",
+    name: "PLN SPKLU UC Surabaya",
+    address: "Universitas Ciputra, CitraLand CBD Boulevard, Surabaya",
+    distance: "7.9 km",
+    pricePerKwh: 2650,
     availableChargers: 0,
     totalChargers: 4,
     connectorTypes: ["CCS2", "Type 2"],
     status: "Full",
-    estimatedCost: 87500
+    estimatedCost: 92750
   }
 ];
 
@@ -65,20 +65,20 @@ export const chargingSessions = [
   {
     id: "CP-2506-1184",
     date: "2026-06-12 09:42",
-    location: "PLN SPKLU Icon Plus Sudirman",
-    vehicle: "B 2187 EV",
+    location: "PLN SPKLU Pakuwon Mall Surabaya",
+    vehicle: "L 2187 EV",
     driver: "Raka Pratama",
     kWh: 24.8,
     duration: "38 min",
-    cost: 61157,
+    cost: 61380,
     paymentStatus: "Paid by fleet billing",
     receiptStatus: "Receipt sent"
   },
   {
     id: "CP-2506-1176",
     date: "2026-06-11 18:05",
-    location: "Ciputra World Jakarta EV Hub",
-    vehicle: "B 7731 EVD",
+    location: "PLN SPKLU Ciputra World Surabaya",
+    vehicle: "L 7731 EVD",
     driver: "Dimas Arya",
     kWh: 31.2,
     duration: "46 min",
@@ -89,20 +89,20 @@ export const chargingSessions = [
   {
     id: "CP-2506-1169",
     date: "2026-06-11 17:18",
-    location: "PLN SPKLU Pakuwon Mall",
+    location: "PLN SPKLU Galaxy Mall",
     vehicle: "L 1049 EVC",
     driver: "Maya Lestari",
     kWh: 18.4,
     duration: "54 min",
-    cost: 45540,
+    cost: 45374,
     paymentStatus: "Paid by fleet billing",
     receiptStatus: "Expensed to fleet"
   },
   {
     id: "CP-2506-1158",
     date: "2026-06-10 13:27",
-    location: "PLN SPKLU Rest Area KM 13 Jakarta-Cikampek",
-    vehicle: "B 9002 EVF",
+    location: "PLN SPKLU UC Surabaya",
+    vehicle: "L 9002 EVF",
     driver: "Nadia Putri",
     kWh: 27.6,
     duration: "41 min",
@@ -113,7 +113,7 @@ export const chargingSessions = [
   {
     id: "CP-2506-1142",
     date: "2026-06-09 08:54",
-    location: "Tunjungan Plaza Surabaya SPKLU",
+    location: "PLN SPKLU Tunjungan Plaza",
     vehicle: "L 5518 EV",
     driver: "Andi Wibowo",
     kWh: 21.9,
@@ -127,7 +127,7 @@ export const chargingSessions = [
 export const vehicles = [
   {
     vehicleId: "EV-001",
-    plateNumber: "B 2187 EV",
+    plateNumber: "L 2187 EV",
     model: "Hyundai Ioniq 5 Signature",
     assignedDriver: "Raka Pratama",
     totalKwh: 328.4,
@@ -147,7 +147,7 @@ export const vehicles = [
   },
   {
     vehicleId: "EV-003",
-    plateNumber: "B 7731 EVD",
+    plateNumber: "L 7731 EVD",
     model: "BYD Atto 3 Extended Range",
     assignedDriver: "Dimas Arya",
     totalKwh: 402.6,
@@ -157,7 +157,7 @@ export const vehicles = [
   },
   {
     vehicleId: "EV-004",
-    plateNumber: "B 9002 EVF",
+    plateNumber: "L 9002 EVF",
     model: "Hyundai Ioniq 6",
     assignedDriver: "Nadia Putri",
     totalKwh: 176.8,
@@ -180,7 +180,7 @@ export const vehicles = [
 export const drivers = [
   {
     name: "Raka Pratama",
-    assignedVehicle: "B 2187 EV",
+    assignedVehicle: "L 2187 EV",
     totalSessions: 18,
     totalKwh: 328.4,
     totalCost: 814240,
@@ -196,7 +196,7 @@ export const drivers = [
   },
   {
     name: "Dimas Arya",
-    assignedVehicle: "B 7731 EVD",
+    assignedVehicle: "L 7731 EVD",
     totalSessions: 22,
     totalKwh: 402.6,
     totalCost: 998120,
@@ -204,7 +204,7 @@ export const drivers = [
   },
   {
     name: "Nadia Putri",
-    assignedVehicle: "B 9002 EVF",
+    assignedVehicle: "L 9002 EVF",
     totalSessions: 11,
     totalKwh: 176.8,
     totalCost: 436832,
@@ -221,7 +221,7 @@ export const drivers = [
 ];
 
 export const monthlyInvoice = {
-  companyName: "PT Nusantara Logistics",
+  companyName: "PT Nusantara Logistics Surabaya",
   billingPeriod: "June 2026",
   totalSessions: 81,
   totalKwh: 1411.5,
@@ -271,16 +271,16 @@ export const fleetMetrics = [
 ];
 
 export const usageByDepartment = [
-  { department: "Jakarta Sales", cost: 814240, kwh: 328.4, limit: 1200000 },
+  { department: "Surabaya Sales", cost: 814240, kwh: 328.4, limit: 1200000 },
   { department: "Surabaya Operations", cost: 1247785, kwh: 503.7, limit: 1500000 },
-  { department: "Field Service", cost: 998120, kwh: 402.6, limit: 1300000 },
+  { department: "East Java Field Service", cost: 998120, kwh: 402.6, limit: 1300000 },
   { department: "Executive Pool", cost: 436832, kwh: 176.8, limit: 750000 }
 ];
 
 export const activity = [
-  { time: "10:24", event: "Driver started charging", detail: "Raka at PLN SPKLU Icon Plus Sudirman" },
+  { time: "10:24", event: "Driver started charging", detail: "Raka at PLN SPKLU Pakuwon Mall Surabaya" },
   { time: "09:58", event: "Receipt auto-generated", detail: "CP-2506-1184 sent to Finance" },
-  { time: "09:10", event: "Policy limit checked", detail: "Jakarta Sales daily cap still available" },
+  { time: "09:10", event: "Policy limit checked", detail: "Surabaya Sales daily cap still available" },
   { time: "08:46", event: "Invoice line updated", detail: "June 2026 consolidated bill refreshed" }
 ];
 

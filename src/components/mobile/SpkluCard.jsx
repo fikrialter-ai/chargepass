@@ -1,13 +1,14 @@
 import { Badge } from "../ui/Badge.jsx";
+import { Button } from "../ui/Button.jsx";
 import { formatCurrency } from "../../utils/formatters.js";
 
 export function SpkluCard({ location, onViewDetail }) {
   return (
-    <article className="rounded-[26px] border border-line bg-white p-4 shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-raised">
+    <article className="cp-card rounded-[26px] bg-white p-4 transition duration-200 hover:-translate-y-0.5">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="mb-3 grid h-10 w-10 place-items-center rounded-2xl bg-blue-pale text-sm font-black text-blue-electric">
-            EV
+          <div className="mb-3 grid h-11 w-11 place-items-center rounded-2xl bg-[linear-gradient(135deg,#EFF6FF,#CCFBF1)] text-sm font-black text-blue-electric ring-1 ring-blue-electric/10">
+            CP
           </div>
           <h3 className="text-base font-black leading-5 text-navy">{location.name}</h3>
           <p className="mt-1 text-xs leading-5 text-slate-500">{location.address}</p>
@@ -33,13 +34,9 @@ export function SpkluCard({ location, onViewDetail }) {
           <p className="text-xs font-semibold text-slate-500">Actual tariff / kWh</p>
           <p className="font-black text-blue-electric">{formatCurrency(location.pricePerKwh)}</p>
         </div>
-        <button
-          type="button"
-          onClick={() => onViewDetail(location)}
-          className="rounded-2xl bg-navy px-4 py-2.5 text-sm font-black text-white transition hover:bg-blue-deep"
-        >
+        <Button size="sm" onClick={() => onViewDetail(location)}>
           View Detail
-        </button>
+        </Button>
       </div>
     </article>
   );

@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Button } from "../ui/Button.jsx";
 import { formatCurrency } from "../../utils/formatters.js";
 
-const paymentMethods = ["Corporate Account", "QRIS", "Debit/Credit Card", "E-Wallet"];
+const paymentMethods = ["Corporate Billing Account", "QRIS", "Debit/Credit Card", "Bank Virtual Account"];
 
 export function PaymentAuthorizationScreen({ location, onBack, onAuthorize }) {
   const chargerId = `${location.id.toUpperCase().replace("SPKLU-", "CHG-")}-01`;
@@ -25,12 +26,12 @@ export function PaymentAuthorizationScreen({ location, onBack, onAuthorize }) {
         </div>
       </div>
 
-      <section className="mt-5 rounded-[28px] bg-navy p-5 text-white shadow-soft">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Payment hold</p>
+      <section className="mt-5 rounded-[28px] p-5 text-white shadow-glow fintech-gradient">
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Usage authorization</p>
         <h3 className="mt-2 text-xl font-black leading-6">{location.name}</h3>
         <p className="mt-2 text-sm leading-6 text-blue-100">{location.address}</p>
         <div className="mt-4 rounded-2xl bg-white/10 p-3 text-xs font-bold text-white ring-1 ring-white/10">
-          No prepaid wallet. Final charge is based on completed kWh.
+          No top-up. Final charge is based on completed kWh.
         </div>
       </section>
 
@@ -77,13 +78,9 @@ export function PaymentAuthorizationScreen({ location, onBack, onAuthorize }) {
         </p>
       </section>
 
-      <button
-        type="button"
-        onClick={onAuthorize}
-        className="mt-4 w-full rounded-2xl bg-blue-electric px-4 py-3 text-sm font-black text-white shadow-card hover:bg-blue-deep"
-      >
+      <Button className="mt-4 w-full" onClick={onAuthorize}>
         Authorize Payment
-      </button>
+      </Button>
     </div>
   );
 }

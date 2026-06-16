@@ -21,7 +21,7 @@ export function SpkluDetailScreen({ location, onBack, onScanQr, onStartCharging 
         </div>
       </div>
 
-      <section className="mt-5 overflow-hidden rounded-[28px] bg-navy text-white shadow-soft">
+      <section className="mt-5 overflow-hidden rounded-[28px] text-white shadow-soft fintech-gradient">
         <div className="h-32 bg-[linear-gradient(135deg,#EFF6FF,#E0F7FF)] p-4 text-navy">
           <div className="relative h-full overflow-hidden rounded-2xl bg-white/80">
             <div className="absolute left-4 top-4 h-24 w-28 rounded-full border border-blue-electric/20" />

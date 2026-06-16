@@ -19,7 +19,7 @@ import {
 } from "../../data/mockData.js";
 import { formatCurrency, formatNumber } from "../../utils/formatters.js";
 
-const sidebarItems = ["Overview", "Vehicles", "Drivers", "Transactions", "Invoice", "Settings"];
+const sidebarItems = ["Overview", "Vehicles", "Drivers", "Transactions", "Monthly Invoice", "Settings"];
 
 const kpis = [
   {
@@ -66,7 +66,7 @@ export function DashboardPage() {
 
   return (
     <section className="min-h-screen bg-cloud text-slate-700">
-      <div className="mx-auto flex max-w-[1680px]">
+      <div className="mx-auto flex min-h-screen max-w-[1680px] bg-cloud">
         <DashboardSidebar activePage={activePage} onPageChange={setActivePage} />
 
         <div className="min-w-0 flex-1">
@@ -80,14 +80,14 @@ export function DashboardPage() {
                 <DriversPage onAction={showAlert} />
               ) : activePage === "Transactions" ? (
                 <TransactionsPage onExport={showAlert} />
-              ) : activePage === "Invoice" ? (
+              ) : activePage === "Monthly Invoice" ? (
                 <InvoicePage invoiceStatus={invoiceStatus} onAction={showAlert} onMarkPaid={markInvoiceAsPaid} />
               ) : activePage === "Settings" ? (
                 <PlaceholderPage title="Settings" body="Company settings will be configured in a later prototype pass." />
               ) : (
                 <OverviewPage
                   onExport={showAlert}
-                  onReviewInvoice={() => setActivePage("Invoice")}
+                  onReviewInvoice={() => setActivePage("Monthly Invoice")}
                   onViewTransactions={() => setActivePage("Transactions")}
                 />
               )}
@@ -122,7 +122,7 @@ function OverviewPage({ onExport, onReviewInvoice, onViewTransactions }) {
 
 function PlaceholderPage({ title, body }) {
   return (
-    <section className="rounded-[24px] border border-line bg-white p-8 shadow-card">
+    <section className="cp-card rounded-[24px] bg-white p-8">
       <Badge tone="gray">{title}</Badge>
       <h2 className="mt-3 text-3xl font-black text-navy">{title}</h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">{body}</p>
@@ -165,7 +165,7 @@ function VehiclesPage({ onAction }) {
 
   return (
     <>
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Badge tone="blue">Vehicles</Badge>
@@ -184,7 +184,7 @@ function VehiclesPage({ onAction }) {
         </div>
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <label className="flex h-11 w-full items-center gap-3 rounded-2xl border border-line bg-slate-50 px-3 text-sm text-slate-500 lg:max-w-md">
             <span className="h-2.5 w-2.5 rounded-full border-2 border-slate-400" />
@@ -273,7 +273,7 @@ function DriversPage({ onAction }) {
 
   return (
     <>
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Badge tone="blue">Drivers</Badge>
@@ -298,7 +298,7 @@ function DriversPage({ onAction }) {
         <DriverSummaryCard label="Pending Receipts" value={formatNumber(pendingReceipts)} detail="Need finance review" tone="amber" />
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <DashboardSectionHeader eyebrow="Driver Table" title="Charging totals by driver" />
         <div className="mt-5 overflow-x-auto">
           <table className="table-readable w-full min-w-[860px] text-left text-sm">
@@ -367,7 +367,7 @@ function TransactionsPage({ onExport }) {
 
   return (
     <>
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Badge tone="blue">Transactions</Badge>
@@ -395,7 +395,7 @@ function TransactionsPage({ onExport }) {
         </div>
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           <FilterField label="Date from">
             <input
@@ -483,10 +483,10 @@ function InvoicePage({ invoiceStatus, onAction, onMarkPaid }) {
 
   return (
     <>
-      <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+      <section className="cp-card rounded-[24px] bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <Badge tone="blue">Invoice</Badge>
+            <Badge tone="blue">Monthly Invoice</Badge>
             <h2 className="mt-3 text-3xl font-black text-navy">Monthly invoice</h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
               Consolidated EV charging usage, service fee, and payable amount for finance review.
@@ -518,11 +518,11 @@ function InvoicePage({ invoiceStatus, onAction, onMarkPaid }) {
         </div>
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white shadow-card">
+      <section className="cp-card overflow-hidden rounded-[24px] bg-white">
         <div className="border-b border-line p-6">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">ChargePass Invoice</p>
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">ChargePass Monthly Invoice</p>
               <h3 className="mt-2 text-2xl font-black text-navy">{currentInvoice.id}</h3>
               <p className="mt-2 text-sm text-slate-500">Issued for {monthlyInvoice.billingPeriod}</p>
             </div>
@@ -535,8 +535,8 @@ function InvoicePage({ invoiceStatus, onAction, onMarkPaid }) {
         </div>
 
         <div className="grid gap-5 border-b border-line p-6 lg:grid-cols-2">
-          <InvoiceParty title="Billed to" name={monthlyInvoice.companyName} lines={["Fleet Operations", "Jakarta, Indonesia"]} />
-          <InvoiceParty title="From" name="ChargePass Indonesia" lines={["EV charging payment platform", "Jakarta, Indonesia"]} />
+          <InvoiceParty title="Billed to" name={monthlyInvoice.companyName} lines={["Fleet Operations", "Surabaya, Indonesia"]} />
+          <InvoiceParty title="From" name="ChargePass Indonesia" lines={["EV charging payment platform", "Surabaya, Indonesia"]} />
         </div>
 
         <div className="p-6">
@@ -657,7 +657,7 @@ function DriverSummaryCard({ label, value, detail, tone = "blue" }) {
   const accent = tone === "amber" ? "bg-amber" : "bg-blue-electric";
 
   return (
-    <article className="rounded-[24px] border border-line bg-white p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-raised">
+    <article className="cp-card rounded-[24px] bg-white p-5 transition duration-200 hover:-translate-y-0.5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-bold text-slate-500">{label}</p>
@@ -672,13 +672,13 @@ function DriverSummaryCard({ label, value, detail, tone = "blue" }) {
 
 function OverviewHero({ onExport, onReviewInvoice }) {
   return (
-    <section className="overflow-hidden rounded-[28px] border border-line bg-navy p-6 text-white shadow-soft">
+    <section className="overflow-hidden rounded-[28px] border border-white/10 p-6 text-white shadow-glow fintech-gradient">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <Badge tone="blue">Overview</Badge>
+          <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-black text-white ring-1 ring-white/15">Overview</span>
           <h2 className="mt-3 text-3xl font-black text-white">Fleet charging overview</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-blue-100">
-            Monitor charging cost, kWh consumption, vehicle activity, and receipt readiness across the company EV fleet.
+            Monitor charging cost, kWh consumption, vehicle activity, automatic receipts, and monthly billing controls across the company EV fleet.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-2 sm:flex">
@@ -711,7 +711,7 @@ function KpiCard({ label, value, detail, tone }) {
   }[tone];
 
   return (
-    <article className="rounded-[24px] border border-line bg-white p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-raised">
+    <article className="cp-card rounded-[24px] bg-white p-5 transition duration-200 hover:-translate-y-0.5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-bold text-slate-500">{label}</p>
@@ -726,13 +726,13 @@ function KpiCard({ label, value, detail, tone }) {
 
 function WeeklyCostChart() {
   return (
-    <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+    <section className="cp-card rounded-[24px] bg-white p-5">
       <DashboardSectionHeader
         eyebrow="Weekly Trend"
         title="Weekly charging cost"
         action={<Badge tone="green">Actual usage only</Badge>}
       />
-      <div className="mt-6 h-80">
+      <div className="mt-6 h-80 rounded-[22px] bg-[linear-gradient(180deg,#F8FAFC_0%,#FFFFFF_100%)] p-3 ring-1 ring-line/70">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={weeklyChargingCost} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <CartesianGrid stroke="#E2E8F0" vertical={false} />
@@ -763,7 +763,7 @@ function WeeklyCostChart() {
 
 function RecentTransactions({ onViewAll }) {
   return (
-    <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+    <section className="cp-card rounded-[24px] bg-white p-5">
       <DashboardSectionHeader
         eyebrow="Transactions"
         title="Recent charging transactions"
@@ -810,7 +810,7 @@ function TopVehicles() {
   const highestCost = topVehicles[0]?.totalCost ?? 1;
 
   return (
-    <section className="rounded-[24px] border border-line bg-white p-5 shadow-card">
+    <section className="cp-card rounded-[24px] bg-white p-5">
       <DashboardSectionHeader eyebrow="Cost Drivers" title="Top 5 vehicles" />
       <div className="mt-5 space-y-4">
         {topVehicles.map((vehicle, index) => (
@@ -841,10 +841,10 @@ function TopVehicles() {
 
 function DashboardSidebar({ activePage, onPageChange }) {
   return (
-    <aside className="hidden min-h-screen w-72 shrink-0 bg-navy text-white lg:flex lg:flex-col">
+    <aside className="hidden min-h-screen w-72 shrink-0 bg-navy text-white shadow-soft lg:flex lg:flex-col">
       <div className="border-b border-white/10 p-6">
         <div className="flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-blue-electric text-lg font-black shadow-[0_12px_34px_rgba(37,99,235,0.35)]">CP</div>
+          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[linear-gradient(135deg,#2563EB,#06B6D4)] text-lg font-black shadow-[0_12px_34px_rgba(37,99,235,0.35)]">CP</div>
           <div>
             <p className="text-lg font-black">ChargePass</p>
             <p className="text-xs font-semibold text-blue-100">Fleet Finance Console</p>
@@ -869,9 +869,9 @@ function DashboardSidebar({ activePage, onPageChange }) {
       </nav>
 
       <div className="m-4 rounded-[24px] bg-white/10 p-4 ring-1 ring-white/10">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Active fleet</p>
-        <p className="mt-2 text-2xl font-black">132 EVs</p>
-        <p className="mt-1 text-sm text-blue-100">PT Nusantara Logistics</p>
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-cyan">Fleet cost control</p>
+        <p className="mt-2 text-2xl font-black">No top-up</p>
+        <p className="mt-1 text-sm text-blue-100">Actual usage billing for Surabaya EV operations</p>
       </div>
     </aside>
   );
@@ -879,12 +879,12 @@ function DashboardSidebar({ activePage, onPageChange }) {
 
 function DashboardHeader({ activePage, onPageChange, onAction }) {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-white/90 px-5 py-4 backdrop-blur sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-20 border-b border-line bg-white/82 px-5 py-4 backdrop-blur-xl sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">Company Dashboard</p>
-            <h1 className="mt-1 text-xl font-black text-navy">PT Nusantara Logistics - {activePage}</h1>
+            <h1 className="mt-1 text-xl font-black text-navy">PT Nusantara Logistics Surabaya - {activePage}</h1>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <label className="flex h-10 min-w-[240px] items-center gap-2 rounded-2xl border border-line bg-slate-50 px-3 text-sm text-slate-500 transition focus-within:border-blue-electric focus-within:bg-white">

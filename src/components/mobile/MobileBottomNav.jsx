@@ -7,7 +7,7 @@ const navItems = [
 
 export function MobileBottomNav({ active = "Home", onNavigate }) {
   return (
-    <nav className="grid h-[78px] shrink-0 grid-cols-4 border-t border-line bg-white/95 px-2 pb-2 pt-2 shadow-[0_-18px_32px_rgba(15,23,42,0.08)] backdrop-blur">
+    <nav className="grid h-[78px] shrink-0 grid-cols-4 border-t border-line bg-white/85 px-2 pb-2 pt-2 shadow-[0_-18px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl">
       {navItems.map((item) => {
         const isActive = item.label === active;
 
@@ -17,7 +17,7 @@ export function MobileBottomNav({ active = "Home", onNavigate }) {
             type="button"
             onClick={() => onNavigate?.(item.label)}
             className={`flex min-w-0 flex-col items-center justify-center gap-1 rounded-2xl text-[11px] font-bold transition duration-200 ${
-              isActive ? "bg-navy text-white shadow-card" : "text-slate-400 hover:bg-slate-50 hover:text-navy"
+              isActive ? "bg-blue-pale text-blue-deep shadow-card ring-1 ring-blue-electric/10" : "text-slate-400 hover:bg-slate-50 hover:text-navy"
             }`}
             aria-label={item.label}
           >

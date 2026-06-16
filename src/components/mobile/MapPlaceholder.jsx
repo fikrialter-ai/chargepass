@@ -21,7 +21,7 @@ export function MapPlaceholder() {
       </div>
       <div className="absolute bottom-3 left-4 right-4 rounded-xl bg-white/92 px-4 py-3 shadow-card backdrop-blur">
         <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">Nearby map</p>
-        <p className="mt-1 text-sm font-bold text-navy">SPKLU coverage around your route</p>
+        <p className="mt-1 text-sm font-bold text-navy">Surabaya SPKLU coverage around your route</p>
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ export function ChargingProgressScreen({ location, onBack, onStopCharging }) {
         </div>
       </div>
 
-      <section className="mt-5 rounded-[28px] bg-navy p-5 text-white shadow-soft">
+      <section className="mt-5 rounded-[28px] p-5 text-white shadow-glow fintech-gradient">
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-sm font-semibold text-blue-100">Status</p>
