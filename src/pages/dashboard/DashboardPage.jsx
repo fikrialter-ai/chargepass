@@ -883,7 +883,7 @@ function DashboardHeader({ activePage, onPageChange, onAction }) {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">Company Dashboard</p>
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-electric">Company App</p>
             <h1 className="mt-1 text-xl font-black text-navy">PT Nusantara Logistics Surabaya - {activePage}</h1>
           </div>
           <div className="flex flex-wrap items-center gap-3">

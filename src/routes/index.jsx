@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <LandingPage /> },
       { path: "driver", element: <DriverPage /> },
+      { path: "company", element: <DashboardPage /> },
       { path: "dashboard", element: <DashboardPage /> },
       { path: "*", element: <Navigate to="/" replace /> }
     ]

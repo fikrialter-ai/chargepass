@@ -2,12 +2,12 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const navItems = [
   { label: "Driver App", to: "/driver" },
-  { label: "Company Dashboard", to: "/dashboard" }
+  { label: "Company App", to: "/company" }
 ];
 
 export function AppLayout() {
   const { pathname } = useLocation();
-  const showAppHeader = !pathname.startsWith("/dashboard");
+  const showAppHeader = pathname === "/";
 
   return (
     <main className="min-h-screen bg-cloud text-ink">
