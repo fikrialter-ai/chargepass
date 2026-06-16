@@ -11,34 +11,19 @@ const productPillars = [
 
 const appChoices = [
   {
-    eyebrow: "Mobile Driver App",
-    title: "Charge at any SPKLU without prepaid balance",
-    body:
-      "A fintech-style mobile flow for finding nearby Surabaya SPKLU, scanning a charger, authorizing payment, tracking charging progress, and sending receipts to the company.",
+    title: "Driver App",
+    body: "Find SPKLU, authorize payment, start charging, and get automatic receipts.",
     to: "/driver",
     cta: "Open Driver App",
-    icon: "EV",
-    gradient: "from-[#2563EB] via-[#2563EB] to-[#57DFFE]",
-    stats: [
-      ["Nearby SPKLU", "5"],
-      ["Monthly kWh", "148.6"],
-      ["Receipt", "Auto"]
-    ]
+    icon: "EV"
   },
   {
-    eyebrow: "Company App",
-    title: "Control fleet charging cost and monthly billing",
+    title: "Company Dashboard",
     body:
-      "A B2B SaaS dashboard for finance and fleet teams to monitor vehicles, drivers, transactions, kWh usage, receipts, and monthly invoices.",
+      "Monitor fleet charging cost, kWh usage, transactions, receipts, and monthly invoices.",
     to: "/company",
-    cta: "Open Company App",
-    icon: "CO",
-    gradient: "from-[#0F172A] via-[#1D4ED8] to-[#06B6D4]",
-    stats: [
-      ["Sessions", "186"],
-      ["Fleet kWh", "2,487"],
-      ["Invoice", "Ready"]
-    ]
+    cta: "Open Company Dashboard",
+    icon: "CO"
   }
 ];
 
@@ -66,22 +51,23 @@ export function LandingPage() {
               </span>
             ))}
           </div>
+        </div>
 
-          <div className="mt-8 rounded-[28px] border border-line bg-white/82 p-5 shadow-card backdrop-blur">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-blue-electric">Prototype split</p>
-            <div className="mt-4 grid gap-3 text-sm font-semibold text-slate-600">
-              <AppSplitRow label="Driver App" value="/driver" />
-              <AppSplitRow label="Company App" value="/company" />
-              <AppSplitRow label="Legacy dashboard alias" value="/dashboard" />
-            </div>
+        <section className="rounded-[32px] border border-line bg-white/82 p-5 shadow-card backdrop-blur">
+          <div className="rounded-[28px] bg-[radial-gradient(circle_at_18%_10%,rgba(87,223,254,0.22),transparent_28%),radial-gradient(circle_at_90%_12%,rgba(37,99,235,0.16),transparent_32%),linear-gradient(180deg,#FFFFFF_0%,#F8FAFC_100%)] p-5 ring-1 ring-white/80">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-blue-electric">Product Demo</p>
+            <h3 className="mt-3 text-3xl font-black leading-tight text-navy">Choose your ChargePass experience</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Open the mobile charging flow or the fleet finance console depending on the story you want to present.
+            </p>
           </div>
-        </div>
 
-        <div className="grid gap-5">
-          {appChoices.map((app) => (
-            <AppChoiceCard key={app.to} app={app} />
-          ))}
-        </div>
+          <div className="mt-5 grid gap-4">
+            {appChoices.map((app) => (
+              <AppChoiceCard key={app.to} app={app} />
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );
@@ -89,46 +75,24 @@ export function LandingPage() {
 
 function AppChoiceCard({ app }) {
   return (
-    <article className="group overflow-hidden rounded-[32px] border border-line bg-white p-5 shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-raised">
-      <div className={`rounded-[28px] bg-gradient-to-br ${app.gradient} p-5 text-white shadow-glow`}>
-        <div className="flex items-start justify-between gap-5">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-white/72">{app.eyebrow}</p>
-            <h3 className="mt-3 max-w-xl text-2xl font-black leading-8">{app.title}</h3>
-          </div>
-          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/16 text-sm font-black ring-1 ring-white/20">
+    <article className="group rounded-[28px] border border-line bg-white p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-raised">
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex min-w-0 items-start gap-4">
+          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#2563EB,#06B6D4)] text-sm font-black text-white shadow-glow">
             {app.icon}
           </div>
+          <div className="min-w-0">
+            <h4 className="text-xl font-black text-navy">{app.title}</h4>
+            <p className="mt-2 max-w-md text-sm leading-6 text-slate-600">{app.body}</p>
+          </div>
         </div>
-
-        <div className="mt-6 grid grid-cols-3 gap-2">
-          {app.stats.map(([label, value]) => (
-            <div key={label} className="rounded-2xl bg-white/12 p-3 ring-1 ring-white/12 backdrop-blur">
-              <p className="text-[11px] font-bold text-white/68">{label}</p>
-              <p className="mt-1 whitespace-nowrap text-lg font-black">{value}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="p-2 pt-5">
-        <p className="text-sm leading-6 text-slate-600">{app.body}</p>
         <Link
           to={app.to}
-          className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-blue-electric px-5 text-sm font-black text-white transition hover:bg-blue-deep hover:shadow-card"
+          className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-2xl bg-blue-electric px-5 text-sm font-black text-white transition hover:bg-blue-deep hover:shadow-card"
         >
           {app.cta}
         </Link>
       </div>
     </article>
-  );
-}
-
-function AppSplitRow({ label, value }) {
-  return (
-    <div className="flex items-center justify-between gap-4 rounded-2xl bg-slate-50 px-4 py-3 ring-1 ring-line/70">
-      <span>{label}</span>
-      <code className="rounded-full bg-white px-3 py-1 text-xs font-black text-blue-electric shadow-sm">{value}</code>
-    </div>
   );
 }

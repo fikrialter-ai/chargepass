@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const navItems = [
   { label: "Driver App", to: "/driver" },
-  { label: "Company App", to: "/company" }
+  { label: "Company Dashboard", to: "/company" }
 ];
 
 export function AppLayout() {
