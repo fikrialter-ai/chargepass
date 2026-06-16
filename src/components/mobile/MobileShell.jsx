@@ -1,6 +1,15 @@
+import { useEffect, useRef } from "react";
 import { MobileBottomNav } from "./MobileBottomNav.jsx";
 
-export function MobileShell({ children, activeNav = "Home", onNavChange }) {
+export function MobileShell({ children, activeNav = "Home", onNavChange, scrollKey }) {
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [scrollKey]);
+
   return (
     <div className="mx-auto flex h-[844px] w-[min(390px,calc(100vw-16px))] max-w-[390px] flex-col overflow-hidden rounded-[46px] border-[10px] border-[#050816] bg-[#FAF8FF] shadow-soft ring-4 ring-slate-900/10">
       <div className="relative flex items-center justify-center bg-[#FAF8FF] pb-3 pt-4">
@@ -11,7 +20,7 @@ export function MobileShell({ children, activeNav = "Home", onNavChange }) {
           <span className="h-2 w-2 rounded-full bg-current" />
         </div>
       </div>
-      <div className="phone-screen min-h-0 flex-1 overflow-y-auto driver-mesh">{children}</div>
+      <div ref={contentRef} className="phone-screen min-h-0 flex-1 overflow-y-auto pt-6 driver-mesh">{children}</div>
       <MobileBottomNav active={activeNav} onNavigate={onNavChange} />
     </div>
   );

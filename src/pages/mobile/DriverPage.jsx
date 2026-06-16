@@ -71,7 +71,7 @@ export function DriverPage() {
   return (
     <section className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_20%_0%,rgba(87,223,254,0.18),transparent_26%),radial-gradient(circle_at_82%_8%,rgba(37,99,235,0.14),transparent_30%),#FAF8FF] px-0 py-8 sm:px-4">
       <div className="w-full">
-        <MobileShell activeNav={getActiveNav(activeScreen)} onNavChange={handleNavChange}>
+        <MobileShell activeNav={getActiveNav(activeScreen)} onNavChange={handleNavChange} scrollKey={activeScreen}>
           {screen}
         </MobileShell>
       </div>
@@ -224,7 +224,7 @@ function DriverLoginScreen({ onContinue }) {
 
 function DriverHomeScreen({ onViewDetail, onOpenProfile }) {
   return (
-    <div className="min-h-full px-4 pb-5 pt-6">
+    <div className="min-h-full px-4 pb-5">
       <MobileScreenHeader
         title="Hi, Driver"
         subtitle="Find nearby SPKLU and pay actual usage"
